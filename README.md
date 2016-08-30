@@ -31,7 +31,7 @@ Type: `Number` default: 7
 
 ### verStr: use custom version string 
 Type: `String`  
-default:'?v='
+default:'v'
 
 ## Example
 
