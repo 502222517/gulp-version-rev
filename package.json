@@ -1,0 +1,25 @@
+{
+  "name": "gulp-version-rev",
+  "version": "1.0.1",
+  "description": "静态资源添加版本gulp插件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git//:github.com/502222517/gulp-version-rev.git"
+  },
+  "keywords": [
+    "gulp-version",
+    "gulp-version-rev",
+    "gulp-rev",
+    "version-rev"
+  ],
+  "author": "zhh 502222517@qq.com",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
+  }
+}
