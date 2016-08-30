@@ -1,6 +1,9 @@
 ## gulp-version-rev
 
-¾²Ì¬×ÊÔ´Ìí¼Ó°æ±¾ºÅgulp²å¼ş
+é™æ€èµ„æºæ·»åŠ ç‰ˆæœ¬å·gulpæ’ä»¶
+
+#github
+https://github.com/502222517/gulp-version-rev
 
 ## Installation
 
@@ -32,10 +35,10 @@ default:'?v='
 
 ## Example
 
-before£º
+beforeï¼š
 <link rel="stylesheet" href="./styles/test.css" type="text/css" />
 
-after£º
+afterï¼š
 
 <link rel="stylesheet" href="./styles/test.css?v=0ede2cf" type="text/css" />
 

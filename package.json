@@ -1,6 +1,6 @@
 {
   "name": "gulp-version-rev",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "静态资源添加版本gulp插件",
   "main": "index.js",
   "scripts": {
