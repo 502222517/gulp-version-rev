@@ -23,9 +23,7 @@ module.exports = function (options) {
 	options = options || {};
 
      var hashStr= crypto.createHash('md5').update(PLUGIN_NAME+(new Date()).getTime()).digest('hex').substr(0, options.hashLen || 7);
-	  
-	console.log('hashStr==>',hashStr)
-
+ 
 	var setVersion=function(src,name,value){
 		var regex = new RegExp("([\\?&]"+name+"=)([^&#]*)&?",["i"])
 			 ,match = regex.exec(src)
@@ -77,9 +75,8 @@ module.exports = function (options) {
                         return str;
                     }
 
-					// ���ð汾��
-					src =setVersion(src,options.verStr || 'v',hashStr);
-
+					// 设置版本号
+					src =setVersion(src,options.verStr || 'v',hashStr); 
                     return tag + '"' + src + '"';
                     
                     // remote resource
@@ -94,13 +91,24 @@ module.exports = function (options) {
                 });
             }
         }
+		//  文本添加版本号
+        if(options.replaces){ //
+            options.replaces.forEach(function (m,i) {  // { text:'aaa',isAppend:true} ==> aaa会替换成aaa?v=f2a1662 
+                var reg=new RegExp(m.text,"g"); //创建正则RegExp对象
+
+                content = content.replace(reg, function (str) {
+					if(m.isAppend){
+						return setVersion(str,options.verStr || 'v',hashStr);
+					}else{
+						return hashStr;
+					}
+                });
+            });
+        }
 
         file.contents = new Buffer(content);
         this.push(file);
         cb();
     });
 };
-
-
-
 
