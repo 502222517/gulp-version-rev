@@ -33,6 +33,9 @@ Type: `Number` default: 7
 Type: `String`  
 default:'v'
 
+### replaces 替换或追加版本号  // { text:'aaa',isAppend:true} ==> isAppend为true,aaa会替换成aaa?v=f2a1662 ;isAppend为false会替换成f2a1662
+Type:`Array` default:null
+
 ## Example
 
 before：
