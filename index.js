@@ -22,7 +22,15 @@ module.exports = function (options) {
 
 	options = options || {};
 
-     var hashStr= crypto.createHash('md5').update(PLUGIN_NAME+(new Date()).getTime()).digest('hex').substr(0, options.hashLen || 7);
+    var hashStr= crypto.createHash('md5').update(PLUGIN_NAME+(new Date()).getTime()).digest('hex').substr(0, options.hashLen || 7);
+
+	// 添加过滤
+	if(typeof options.filter !='function'){
+		options.filter=function(src){  // 返回true时忽略，不做添加版本号处理
+			// 过滤<% %>
+			return  /<%=([\s\S]+?)%>/.test(src);
+		}
+	}
  
 	var setVersion=function(src,name,value){
 		var regex = new RegExp("([\\?&]"+name+"=)([^&#]*)&?",["i"])
@@ -74,6 +82,10 @@ module.exports = function (options) {
                     if (!/\.[^\.]+$/.test(src)) {
                         return str;
                     }
+					// 过滤成功，不处理
+					if(options.filter(src)){
+						return str;
+					}
 
 					// 设置版本号
 					src =setVersion(src,options.verStr || 'v',hashStr); 
